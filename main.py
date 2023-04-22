@@ -4,6 +4,9 @@ import random
 import requests
 import time
 import logging
+import dotenv
+
+dotenv.load_dotenv()
 
 logger = logging.getLogger()
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +15,7 @@ existed_pages = []
 
 
 def main():
-    logger.info("watching...")
+    logger.info(f"watching {os.getenv('SITE_NAME')}...")
     with client_class.ServerProxy(
             f'https://eventbot:{os.getenv("WD_API_KEY")}@www.wikidot.com/xml-rpc-api.php') as client:
         # 対象ページ確認
@@ -31,7 +34,8 @@ def main():
             "categories": [
                 "_default"
             ],
-            "tags_all": ["コンテスト", "ショート2023", "jp"]
+            "tags_all": ["コンテスト", "ショート2023", "jp"],
+            "tags_none": ["ハブ"]
         })
 
         # プレースホルダが存在しないページを抽出
