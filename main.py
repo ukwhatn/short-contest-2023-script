@@ -4,9 +4,6 @@ import random
 import requests
 import time
 import logging
-import dotenv
-
-dotenv.load_dotenv()
 
 logger = logging.getLogger()
 logging.basicConfig(level=logging.INFO)
