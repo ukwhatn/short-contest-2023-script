@@ -52,23 +52,23 @@ def main():
                 # プレースホルダ作成
                 try:
                     logger.info(f"Creating page: {p}")
-                    client.pages.save_one({
-                        "site": os.getenv("SITE_NAME"),
-                        "page": p,
-                        "title": f"ショートコンテスト2023 - {p}",
-                        "parent_fullname": "shortcontest23",
-                        "save_mode": "create",
-                        "revision_comment": "ショートコンテスト2023のプレースホルダを作成しました。"
-                    })
+                    # client.pages.save_one({
+                    #     "site": os.getenv("SITE_NAME"),
+                    #     "page": p,
+                    #     "title": f"ショートコンテスト2023 - {p}",
+                    #     "parent_fullname": "shortcontest23",
+                    #     "save_mode": "create",
+                    #     "revision_comment": "ショートコンテスト2023のプレースホルダを作成しました。"
+                    # })
                     # タグ付与
                     logger.info(f"Tagging page: {p}")
-                    client.pages.save_one({
-                        "site": os.getenv("SITE_NAME"),
-                        "page": p,
-                        "tags": ["コンテスト", "ショート2023", "jp"],
-                        "save_mode": "update",
-                        "revision_comment": "タグ付与"
-                    })
+                    # client.pages.save_one({
+                    #     "site": os.getenv("SITE_NAME"),
+                    #     "page": p,
+                    #     "tags": ["コンテスト", "ショート2023", "jp"],
+                    #     "save_mode": "update",
+                    #     "revision_comment": "タグ付与"
+                    # })
                     requests.post(
                         os.getenv("WEBHOOK_URL"),
                         {
@@ -94,14 +94,14 @@ def main():
                 # プレースホルダ削除
                 logger.info(f"Deleting page: {p}")
                 rename_to = f"deleted:placeholder-{p}-{random.randint(100, 9999)}"
-                client.pages.save_one({
-                    "site": os.getenv("SITE_NAME"),
-                    "page": p,
-                    "rename_as": rename_to,
-                    "tags": [],
-                    "save_mode": "update",
-                    "revision_comment": "ショートコンテスト2023のプレースホルダを削除しました。"
-                })
+                # client.pages.save_one({
+                #     "site": os.getenv("SITE_NAME"),
+                #     "page": p,
+                #     "rename_as": rename_to,
+                #     "tags": [],
+                #     "save_mode": "update",
+                #     "revision_comment": "ショートコンテスト2023のプレースホルダを削除しました。"
+                # })
                 requests.post(
                     os.getenv("WEBHOOK_URL"),
                     {
